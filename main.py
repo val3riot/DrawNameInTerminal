@@ -1,5 +1,9 @@
 
-name = "a"
+'''
+    alphabet function recive in input a string and return a list with a graphics rappresentation
+    of all char in a string. The i-element of list is a list with five element where the list in 
+    position 0 is the first line of the terminal, in position 1 is the second line of the therminal etc.
+'''
 def alphabet(word):
     a1 =  " _____ "
     a2 =  "|     |"
@@ -158,7 +162,7 @@ def alphabet(word):
     z5 =  "/____ "
     z =[z1,z2,z3,z4,z5]
     virgola = [" ", " ", " ", " ", ","]
-    spazio =[ " ", " ", " ", " "]
+    spazio =[ " ", " ", " ", " "," "]
     alp= {
         'a' : a, 
         'b' : b, 
@@ -193,25 +197,46 @@ def alphabet(word):
     for el in range(0,len(word)):
             lista.append(alp[word[el].lower()])
     return lista
+
+'''
+    maxLenStringList recive in input a list of string and return the most longe string
+'''
 def maxLenStringList(lista):
     max = 0
     for i in lista:
         if(len(i)>max):
             max = len(i)
     return max
+
+
+'''
+    replaceMultiple recive three paramiters: the first is mainString, the second is a list with the chars that you would replace
+    and the third is a new char you want insert. return a string with a new char insert
+'''
 def replaceMultiple(mainString, toBeReplaces, newString): 
     for elem in toBeReplaces :   
         if elem in mainString :
             mainString = mainString.replace(elem, newString)
     
     return  mainString
+
+'''
+    aggiungere funzione che divide la stringa in più string di max 30 caratteri
+'''
+
+''' 
+    aggiungere funzione che stampa (algoritmo nel main)
+'''
 if __name__ == "__main__":
-    name = "Qualchecosa"
+    name = "io sono male questi giorni e t" 
+    '''max num caratteri: 30 '''
     a = alphabet(name)
-    for i in range(0,7):
+    for i in range(0,5):
         for j in range(0,len(name)):
-                if (len(a[j][i])<7) and ( i == max(a[j])): #coreggere con  i == max lunghezze di a[j]
-                    print(end=" ")
-                else:
-                    print(a[j][i],end=' ') # replaceMultiple(a[j][i],["|","_","\\","/"],"@")
+            if (len(a[j][i])<7) and ( i == max(a[j])): 
+                '''coreggere con  i == max lunghezze di a[j]'''
+                print(end="")
+            else:
+                print(replaceMultiple(a[j][i],["|","_","\\","/"],"/"),end=' ') 
+                '''replaceMultiple(a[j][i],["|","_","\\","/"],"@")'''
         print()
