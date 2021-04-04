@@ -221,22 +221,45 @@ def replaceMultiple(mainString, toBeReplaces, newString):
     return  mainString
 
 '''
-    aggiungere funzione che divide la stringa in più string di max 30 caratteri
+funzione che divide la stringa in più string di max l caratteri e ritorna una lista 
+con sottostringhe di s con lunghezza massima l caratteri
 '''
-
+def dividiStringa (s, l ):
+    if len(s)>l:
+        lista = []
+        temp = ""
+        count = l
+        i = 0
+        while(count<len(s)):
+            for j in s[i:count]:
+                temp+=j
+            lista.append(temp)
+            temp = ""
+            i = count
+            count+=l
+        if len(s)%l != 0:
+            lista.append(s[count-l:len(s)])
+        return lista
+    return [s]
 ''' 
-    aggiungere funzione che stampa (algoritmo nel main)
+    funzione che stampa (algoritmo nel main)
 '''
-if __name__ == "__main__":
-    name = "io sono male questi giorni e t" 
-    '''max num caratteri: 30 '''
-    a = alphabet(name)
+def disegnaStringa(stringa):
+    a = alphabet(stringa)
     for i in range(0,5):
-        for j in range(0,len(name)):
-            if (len(a[j][i])<7) and ( i == max(a[j])): 
-                '''coreggere con  i == max lunghezze di a[j]'''
-                print(end="")
-            else:
-                print(replaceMultiple(a[j][i],["|","_","\\","/"],"/"),end=' ') 
+        for j in range(0,len(stringa)):
+                print(replaceMultiple(a[j][i],["|","_","\\","/"],"@"),end=' ') 
                 '''replaceMultiple(a[j][i],["|","_","\\","/"],"@")'''
+        print()    
+if __name__ == "__main__":
+    
+    name = "prova con piu di trenta caratteri"
+    l = dividiStringa(name,30)
+
+    for i in l:
+        disegnaStringa(i)
         print()
+        print()
+
+ 
+    
